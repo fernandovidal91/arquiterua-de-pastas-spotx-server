@@ -18,7 +18,7 @@ domain/
     └── use-cases/
 ```
 
-### Pasta "contracts"
+## Pasta "contracts"
 
 A pasta "contracts" na camada de "Domain" desempenha um papel fundamental em nossa aplicação, garantindo a organização e a clareza dos contratos de muitas classes essenciais do sistema. Estes contratos definem interfaces, estabelecem responsabilidades e ajudam a manter uma estrutura sólida e flexível em nosso código.
 
@@ -119,7 +119,7 @@ export namespace ICreateUserRepository {
 }
 ```
 
-### Pasta "entities"
+## Pasta "entities"
 
 Dentro da pasta "entities" na camada de "Domain", encontramos duas subpastas essenciais que desempenham funções cruciais em nossa aplicação.
 
@@ -165,7 +165,7 @@ export const userModelMock: UserModel = {
 };
 ```
 
-### Pasta "models"
+## Pasta "models"
 
 A pasta "models" desempenha um papel na organização dos modelos de entidades da nossa aplicação. Ela é responsável por abrigar os modelos de entidades que representam as principais estruturas de dados em nosso sistema. Cada modelo dentro desta pasta representa uma entidade do sistema, capturando os tipos de dados e a estrutura específica associados a essa entidade.
 
@@ -206,7 +206,7 @@ export type UserModel = {
 };
 ```
 
-### Pasta "use-cases"
+## Pasta "use-cases"
 
 A pasta "use-cases" é o coração da nossa aplicação na camada de "Domain." Ela desempenha um papel vital ao implementar os contratos que definimos e, principalmente, é onde toda a regra de negócio da aplicação é concebida e executada.
 
@@ -272,4 +272,42 @@ export class CreateUserUseCase implements ICreateUserUseCase {
   }
 }
 
+```
+
+# Infra Layer
+
+A camada de "Infra" é um componente essencial de nossa arquitetura de software, projetada para lidar com aspectos técnicos e tecnológicos da aplicação. Ela atua como uma fronteira entre a camada de "Domain," onde residem as regras de negócio, e o mundo externo, abrangendo a interação com bibliotecas, serviços externos e recursos técnicos.
+
+Nesta camada, concentramos nossos esforços em:
+
+- **Integração Externa:** A camada de "Infra" é responsável por interagir com sistemas externos, como bancos de dados, serviços de terceiros e APIs. Isso inclui a gestão de conexões, transações e chamadas de rede, garantindo uma comunicação eficaz com recursos externos.
+
+- **Detalhes Técnicos:** Aqui, lidamos com detalhes técnicos da aplicação, como a configuração de frameworks, manipulação de autenticação e autorização e gerenciamento de recursos de sistema.
+
+- **Inversão de Dependência:** Seguindo o princípio da inversão de dependência, as classes na camada de "Infra" frequentemente implementam interfaces definidas na camada de "Domain." Isso permite que as classes na camada de "Domain" permaneçam desacopladas das implementações específicas de infraestrutura.
+
+- **Frameworks e Bibliotecas:** Fazemos uso de frameworks e bibliotecas externas para implementar funcionalidades técnicas, como persistência de dados, segurança, comunicação em rede e muito mais. Isso nos permite aproveitar as melhores práticas e recursos da comunidade de desenvolvimento.
+
+- **Testabilidade:** Mesmo tratando de detalhes técnicos, garantimos que a camada de "Infra" seja projetada de forma a ser testável. Isso envolve o uso de padrões de injeção de dependência, permitindo a substituição de implementações reais por simulações nos testes.
+
+A camada de "Infra" é um componente flexível que nos permite adaptar nossa aplicação a diferentes tecnologias e plataformas, ao mesmo tempo em que mantém a camada de "Domain" focada nas regras de negócio. Ela desempenha um papel crucial na garantia de que nossa aplicação seja eficaz na integração com o mundo exterior e permaneça independente de detalhes técnicos.
+
+## Estrutura de Pastas
+
+```
+infra/
+    ├── database/
+    │   ├── config/
+    │   │   └── postgres/
+    │   │       ├── typeorm/
+    │   │       │   ├── migrations/ (migrations específicas para o PostgreSQL)
+    │   │       │   └── utils/
+    │   │       │       └── mocks/ (mocks específicos para PostgreSQL)
+    ├── postgres/
+    │   └── typeorm/
+    │       ├── user/ (um exemplo de módulo com nome "user")
+    │       │   ├── entities/ (entidades relacionadas ao módulo "user")
+    │       │   └── repository/ (classes que implementam métodos de ações no banco de dados para "user")
+    ├── gateways/ (bibliotecas usadas pelo sistema)
+    └── protocols/ (classes com métodos de conexão a APIs externas)
 ```
