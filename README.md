@@ -1,0 +1,1 @@
+# arquiterua-de-pastas-spotx-server
